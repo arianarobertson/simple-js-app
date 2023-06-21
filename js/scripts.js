@@ -21,7 +21,7 @@ for (let i = 0; i < pokemonList.length; i++) {
     let output = pokemon.name + " (height: " + pokemon.height + ")";
     
     // Check if the height is above a certain value and add a special note
-    if (pokemon.height > 1.5) {
+    if (pokemon.height > 1.6) {
         output += " - Wow, that's big!";
     }
     
