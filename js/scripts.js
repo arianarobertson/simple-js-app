@@ -1,30 +1,43 @@
-let pokemonList = [
-    {
+let pokemonRepository = (function () {
+    let pokemonList = [
+      {
         name: "Charmander",
         height: 0.6,
-        type: ["fire"]
-    },
-    {
+        type: ["fire"],
+      },
+      {
         name: "Golbat",
         height: 1.6,
-        type: ["poison", "flying"]
-    },
-    {
+        type: ["poison", "flying"],
+      },
+      {
         name: "Rhydon",
         height: 1.9,
-        type: ["rock", "ground"]
-    },
+        type: ["rock", "ground"],
+      },
     ];
   
-for (let i = 0; i < pokemonList.length; i++) {
-    let pokemon = pokemonList[i];
-    let output = pokemon.name + " (height: " + pokemon.height + ")";
-    
-    // Check if the height is above a certain value and add a special note
-    if (pokemon.height > 1.6) {
-        output += " - Wow, that's big!";
+    function getAll() {
+      return pokemonList;
     }
-    
-    document.write(output + "<br>");
-    document.write("<br>"); // Add a line break between each output
-}
+  
+    function add(pokemon) {
+      pokemonList.push(pokemon);
+    }
+  
+    return {
+      getAll: getAll,
+      add: add,
+    };
+  })();
+  
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    let pokemonDetails = pokemon.name + " (height: " + pokemon.height + ")";
+  
+    if (pokemon.height > 1.7) {
+      pokemonDetails += " - Wow, that's big!";
+    }
+  
+    document.write(pokemonDetails + "<br>");
+  });
+  
