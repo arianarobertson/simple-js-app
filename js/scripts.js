@@ -12,9 +12,11 @@ let pokemonRepository = (function () {
         console.log("pokemon is not correct");
       }
     }
+  
     function getAll() {
       return pokemonList;
     }
+  
     function addListItem(pokemon) {
       let pokemonList = document.querySelector(".pokemon-list");
       let listpokemon = document.createElement("li");
@@ -23,7 +25,7 @@ let pokemonRepository = (function () {
       button.classList.add("button-class");
       listpokemon.appendChild(button);
       pokemonList.appendChild(listpokemon);
-      button.addEventListener("click", function(event) {
+      button.addEventListener("click", function (event) {
         showDetails(pokemon);
       });
     }
@@ -42,7 +44,7 @@ let pokemonRepository = (function () {
         });
       }).catch(function (e) {
         console.error(e);
-      })
+      });
     }
   
     function loadDetails(item) {
@@ -60,26 +62,26 @@ let pokemonRepository = (function () {
     }
   
     function showDetails(item) {
-        pokemonRepository.loadDetails(item).then(function () {
-          const modalContainer = document.getElementById("modal-container");
-          const modalTitle = document.getElementById("modal-title");
-          const modalHeight = document.getElementById("modal-height");
-          const modalImage = document.getElementById("modal-image");
-          const modalClose = document.getElementById("modal-close");
-    
-          modalTitle.textContent = "Name: " + item.name;
-          modalHeight.textContent = "Height: " + item.height;
-    
-          modalImage.setAttribute("src", item.imageUrl);
-          modalImage.setAttribute("alt", item.name);
-    
-          modalClose.addEventListener("click", function () {
-            modalContainer.style.display = "none";
-          });
-    
-          modalContainer.style.display = "block";
+      pokemonRepository.loadDetails(item).then(function () {
+        const modalContainer = document.getElementById("modal-container");
+        const modalTitle = document.getElementById("modal-title");
+        const modalHeight = document.getElementById("modal-height");
+        const modalImage = document.getElementById("modal-image");
+        const modalClose = document.getElementById("modal-close");
+  
+        modalTitle.textContent = "Name: " + item.name;
+        modalHeight.textContent = "Height: " + item.height;
+  
+        modalImage.setAttribute("src", item.imageUrl);
+        modalImage.setAttribute("alt", item.name);
+  
+        modalClose.addEventListener("click", function () {
+          modalContainer.style.display = "none";
         });
-      }
+  
+        modalContainer.style.display = "block";
+      });
+    }
   
     return {
       add: add,
