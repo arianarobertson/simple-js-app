@@ -60,10 +60,26 @@ let pokemonRepository = (function () {
     }
   
     function showDetails(item) {
-      pokemonRepository.loadDetails(item).then(function () {
-        console.log(item);
-      });
-    }
+        pokemonRepository.loadDetails(item).then(function () {
+          const modalContainer = document.getElementById("modal-container");
+          const modalTitle = document.getElementById("modal-title");
+          const modalHeight = document.getElementById("modal-height");
+          const modalImage = document.getElementById("modal-image");
+          const modalClose = document.getElementById("modal-close");
+    
+          modalTitle.textContent = "Name: " + item.name;
+          modalHeight.textContent = "Height: " + item.height;
+    
+          modalImage.setAttribute("src", item.imageUrl);
+          modalImage.setAttribute("alt", item.name);
+    
+          modalClose.addEventListener("click", function () {
+            modalContainer.style.display = "none";
+          });
+    
+          modalContainer.style.display = "block";
+        });
+      }
   
     return {
       add: add,
