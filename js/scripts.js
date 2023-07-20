@@ -28,6 +28,7 @@ let pokemonRepository = (function () {
     button.setAttribute("data-toggle", "modal"); // Set data-toggle attribute
     pokemonCard.appendChild(button);
     pokemonRow.appendChild(pokemonCard);
+    button.classList.add("rainbow-gradient-button");
     button.addEventListener("click", function (event) {
       showDetails(pokemon);
     });
@@ -98,8 +99,8 @@ let pokemonRepository = (function () {
 
   // Function to display the filtered Pokémon list
   function displayPokemonList(pokemonList) {
-    let pokemonListContainer = document.querySelector(".pokemon-list");
-    pokemonListContainer.innerHTML = ""; // Clear previous list
+    let pokemonRow = document.getElementById("pokemonRow");
+    pokemonRow.innerHTML = ""; // clear previous list
 
     pokemonList.forEach(function (pokemon) {
       addListItem(pokemon);
